@@ -91,7 +91,7 @@ export const EntityRouter = (app: Express) => {
                             try {
                                 if (Array.isArray(data)) {
                                     client.InsertMany(
-                                        data as any,
+                                        { entitys: data },
                                         (err, data) => {
                                             if (!err) {
                                                 resolve(data)
@@ -112,7 +112,7 @@ export const EntityRouter = (app: Express) => {
                             } catch (error) {
                                 reject(error)
                             }
-                        }, 1000)
+                        }, 1500)
                     })
                 }
                 await new Promise((resolve, reject) => {
